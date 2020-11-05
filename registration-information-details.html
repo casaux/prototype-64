@@ -1,0 +1,472 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>myCASA</title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="initial-scale=1">
+      <link rel="stylesheet" href="../mycasa-src-3.0/css/designsystem.min.css">
+      <link rel="stylesheet" href="../mycasa-src-3.0/css/casa.css">
+
+       	   <style>
+
+		   .casa-drone-instructions{display: none;}
+		   .casa-drone-instructions strong{font-weight:600;color:#000;}
+	   </style>
+
+      <script type="text/javascript" src="../mycasa-src-3.0/js/designsystem.min.js"></script>
+      <script type="text/javascript" src="../mycasa-src-3.0/js/jquery.min.js"></script>
+      <script type="text/javascript" src="../mycasa-src-3.0/js/jquery.js"></script>
+	  <script type="text/javascript" src="va.js"></script>
+      <script type="text/javascript">
+         /* page specific js */
+
+		  $( document ).ready(function() {
+
+			  $(".registration-type").on('input', function() {
+
+				  if($("input:radio[name='radio-ex']:checked").val()=="commercial"){
+
+					  $("#commercial").css("display","block");
+
+				  } else {
+
+					  $("#commercial").css("display","none");
+
+				  }
+
+			  });
+
+
+			  $("#no-serial").change(function() {
+
+				if ( $(this).is(':checked') ) {
+					$("#text-input-block3").prop('disabled', true);
+					$("#no-serial-callout").css("display","block");
+				} else {
+					$("#text-input-block3").prop('disabled', false);
+					$("#no-serial-callout").css("display","none");
+				}
+
+			   });
+
+			   $("#manufacturer").on('input', function() {
+
+			   		if($(this).val()==2){
+			   			 $("#home-build").css("display","none");
+			   			 $(".default-values").css("display","block");
+			   		}
+				   else if($(this).val()==3){
+			   			 $("#home-build").css("display","none");
+			   			 $(".default-values").css("display","block");
+			   		}
+			   				   else if($(this).val()==4){
+			   			 $("#home-build").css("display","none");
+			   			 $(".default-values").css("display","block");
+			   		}
+				   else {
+			   			 $("#home-build").css("display","block");
+			   			 $(".default-values").css("display","none");
+			   		}
+
+
+			   });
+
+			  			   $("#dji-list").on('input', function() {
+
+			   		if($(this).val()==35){
+			   			 $("#home-build").css("display","block");
+			   		}
+				   else {
+			   			 $("#home-build").css("display","none");
+			   		}
+
+
+			   });
+
+			  	$("#manufacturer").change(function() {
+						$("#home-build").css("display","none");
+					 if($(this).val()==2){
+						 $("#text-input-block2").css("display","none");
+						 $("#dji-list").css("display","block");
+						 $("#parrot-list").css("display","none");
+						 $("#yuneec-list").css("display","none");
+						 $("#home-build").css("display","none");
+						$("#other-model-free").css("display","none");
+						 $("#other-manufacturer").css("display","none");
+
+					 }
+					else if($(this).val()==3){
+						 $("#text-input-block2").css("display","none");
+						 $("#parrot-list").css("display","block");
+						$("#dji-list").css("display","none");
+						$("#yuneec-list").css("display","none");
+						$("#home-build").css("display","none");
+						$("#other-model-free").css("display","none");
+						$("#other-manufacturer").css("display","none");
+					 }
+										else if($(this).val()==4){
+						 $("#text-input-block2").css("display","none");
+						 $("#yuneec-list").css("display","block");
+						$("#dji-list").css("display","none");
+						$("#parrot-list").css("display","none");
+						$("#home-build").css("display","none");
+						$("#other-model-free").css("display","none");
+											$("#other-manufacturer").css("display","none");
+
+					 }
+
+															else if($(this).val()==6){
+						 $("#text-input-block2").css("display","none");
+						 $("#yuneec-list").css("display","none");
+						$("#dji-list").css("display","none");
+						$("#parrot-list").css("display","none");
+						$("#other-manufacturer").css("display","block");
+						$("#text-input-block2").css("display","block");
+						$("#home-build").css("display","block");
+						$("#other-model-free").css("display","block");
+					 }
+					else {
+						 $("#text-input-block2").css("display","block");
+						$("#home-build").css("display","block");
+						$("#other-manufacturer").css("display","block");
+					 }
+
+
+				 });
+
+
+			  	 $(".model-name-version").change(function() {
+						$("#home-build").css("display","none");
+					 $("#other-model-free").css("display","none");
+
+					 if($(this).find("option:selected").text()=="Other"){
+						$("#home-build").css("display","block");
+						 $("#other-model-free").css("display","block");
+					 }
+
+
+
+				 });
+
+
+
+
+		  });
+
+
+
+
+      </script>
+   </head>
+     <body class="live-demo au-body au-grid">
+      <main class="au-grid">
+         <div class="header">
+            <div class="container">
+               <div class="row">
+                  <div class="logo au-body au-body--dark">
+                     <a href="index.html"><img src="../mycasa-src/img/CASALOGO-white-i.svg"></a>
+                  </div>
+                  <div class="casa-menu">
+
+                  	<div id="dropdown-menu">
+						<div id="dd-menu"><a class="au-btn au-btn--dark menu" href="#"><img src="../mycasa-src/img/menu.png" height="20" />Menu</a></div>
+						<div id="dd-close"><a class="au-btn au-btn--dark menu" href="#"><img src="../mycasa-src/img/close.png" height="20" />Close</a><br />
+						<br />
+						<p id="mycasa-home"><a href="#">myCASA home</a></p>
+						<p><a href="#">Switch profile</a></p>
+						<p><a href="mycasa-signed-out.html">Sign out</a></p>
+						</div>
+
+
+                  </div>
+               </div></div>
+            </div>
+         </div>
+         <div class="body">
+			<div class="banner">
+				<div class=container>
+					<div class="row">
+					 <div class="col-md-12">
+				This service is currently in beta, we encourage you to <a href="feedback.html">provide feedback</a>
+				</div>
+				</div>
+			</div>
+		</div>
+         <div class="container">
+               <nav class="au-breadcrumbs" aria-label="breadcrumb">
+                  <ul class="au-link-list au-link-list--inline">
+                     <li><a href="dashboard-org.html">myCASA</a></li>
+                     <li>Drone registration</li>
+                  </ul>
+               </nav>
+             			  <div class="casa-section">
+               <header class="au-header" role="banner">
+                  <h1 class="break desktop au-header-heading">Drone registration</h1>
+                  <a class="au-direction-link" href="javascript:history.back()">
+					<span class="au-direction-link__arrow au-direction-link__arrow--left" aria-hidden="true"></span>Back
+					</a>
+               </header>
+			 </div>
+
+        <div class="row">
+               	<div class="col-xs-12 col-md-12 col-lg-6">
+
+
+
+<h2>Drone details</h2>
+
+			 <div class="au-form-group">
+            <label class="au-label" for="manufacturer">Manufacturer</label>
+				<span class="au-hint-text">Please select your drone manufacturer</span>
+
+								<select id="manufacturer" class="au-select au-select--block">
+								<option value="1">Please select manufacturer</option>
+  <option value="2">DJI</option>
+  <option value="3">Parrot</option>
+  <option value="4">Yuneec</option>
+  <option value="6">Other manufacturer</option>
+  <option value="5">Home built</option>
+								</select>
+                    </div>
+
+				 	<div class="default-values">
+                    <div class="au-form-group">
+                        <label class="au-label" for="model-name-version">Model name</label>
+					<span class="au-hint-text">Please select your drone model name and version</span>
+
+				<input class="au-text-input au-text-input--block" name="text-input-block2" id="text-input-block2" type="text" value="">
+
+				<div id="dji-list" style="display:none;">
+					<select id="model-name-version" class="au-select au-select--block model-name-version">
+						<option value="0">Please select model name and version</option>
+						<option value="1">Tello</option>
+						<option value="2">Spark</option>
+						<option value="3">Mavic Air</option>
+						<option value="4">Mavic Pro</option>
+						<option value="5">Mavic2</option>
+						<option value="6">Mavic2 (1 inch)</option>
+						<option value="7">Mavic 2 Enterprise</option>
+						<option value="8">Mavic 2 Enterprise Due</option>
+						<option value="9">Phantom 3 SE</option>
+						<option value="10">Phantom 4</option>
+						<option value="11">Phantom 4 Pro</option>
+						<option value="12">Phantom 4 Pro V2.0</option>
+						<option value="13">Phantom 4 RTK</option>
+						<option value="14">Inspire 2</option>
+						<option value="15">M100</option>
+						<option value="16">M200</option>
+						<option value="17">M200 V2</option>
+						<option value="18">M210</option>
+						<option value="19">M210 RTK</option>
+						<option value="20">M210 RTK V2 (RTK)</option>
+						<option value="21">M210 V2</option>
+						<option value="22">M600</option>
+						<option value="23">M600 2.0</option>
+						<option value="24">M600 Pro</option>
+						<option value="25">MG-1</option>
+						<option value="26">MG-1P</option>
+						<option value="27">MG-1S</option>
+						<option value="28">MG-1S Advance</option>
+						<option value="29">S1000</option>
+						<option value="30">S1000+</option>
+						<option value="31">S900</option>
+						<option value="32">T16</option>
+						<option value="33">WIND-4</option>
+						<option value="34">WIND-8</option>
+						<option value="35">Other</option>
+
+
+
+
+
+					</select>
+				</div>
+
+								<div id="parrot-list" style="display:none;">
+					<select id="model-name-version" class="au-select au-select--block model-name-version">
+						<option value="0">Please select model name and version</option>
+						<option value="1">Parrot 1</option>
+						<option value="2">Parrot 2</option>
+						<option value="3">Parrot 3</option>
+						<option value="4">Parrot 4</option>
+						<option value="5">Parrot 5</option>
+						<option value="6">Other</option>
+
+
+
+
+
+					</select>
+				</div>
+
+				<div id="yuneec-list" style="display:none;">
+					<select id="model-name-version" class="au-select au-select--block model-name-version">
+						<option value="0">Please select model name and version</option>
+						<option value="1">Yuneec 1</option>
+						<option value="2">Yuneec 2</option>
+						<option value="3">Yuneec 3</option>
+						<option value="4">Yuneec 4</option>
+						<option value="5">Yuneec 5</option>
+						<option value="6">Other</option>
+
+
+
+
+
+					</select>
+                        </div>
+				</div>
+
+
+			 <br>
+
+
+							  </div>
+
+			 	<div id="other-manufacturer" style="display:none;">
+                <div class="au-form-group">
+                <label class="au-label" for="other-manufacturer">Manufacturer name</label>
+				<span class="au-hint-text">Please enter the name of your drone manufacturer</span>
+				<input class="au-text-input au-text-input--block" name="text-input-block" id="text-input-block" type="text" value="">
+                </div>
+			 	</div>
+
+			<div id="other-model-free" style="display: none;">
+            <div class="au-form-group">
+                <label class="au-label" for="other-model-free-text">Model name</label>
+				<span class="au-hint-text">Please enter your drone model name and version</span>
+			<input class="au-text-input au-text-input--block" name="text-input-block-other" id="text-input-block-other" type="text" value="">
+                </div>
+			</div>
+
+
+			 	<div id="home-build" style="display:none;">
+                    <div class="au-form-group">
+                <label class="au-label" for="category">Drone category</label>
+				<span class="au-hint-text">Please select your drone category/type.  <a href="casa-drone-types.html" target="_blank">What are these?</a></span>
+
+								<select id="category" class="au-select au-select--block">
+									<option value="1">Please select</option>
+									<option value="2">Aeroplane</option>
+									<option value="3">Helicopter</option>
+									<option value="4">Multi Rotor</option>
+									<option value="5">Airship</option>
+									<option value="6">Powered Lift</option>
+								</select>
+							</div>
+<div class="au-form-group">
+                <label class="au-label" for="text-input-block1">Drone weight (grams)</label>
+				<span class="au-hint-text">Please enter your drone weight in grams. The weight of your drone includes fuel, accessories or attachments such as cameras or gimbals.</span>
+				<input class="au-text-input au-text-input--block" name="text-input-block1" id="text-input-block1" type="text" value="">
+
+				 </div>
+                    </div>
+
+
+
+
+			 <div class="au-form-group">
+                <label class="au-label" for="text-input-block3">Serial number</label>
+				<span class="au-hint-text">Please enter your drone serial number. <a href="casa-drone-serial-numbers.html" target="_blank">How do I find this?</a></span>
+
+							  <input class="au-text-input au-text-input--block" name="text-input-block3" id="text-input-block3" type="text" value="">
+
+
+					<div class="casa-form-guidance casa-drone-instructions" id="dji-1"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+					  <div class="casa-form-guidance casa-drone-instructions" id="dji-2"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+					  <div class="casa-form-guidance casa-drone-instructions" id="dji-3"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+					  <div class="casa-form-guidance casa-drone-instructions" id="dji-4"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+					  <div class="casa-form-guidance casa-drone-instructions" id="dji-5"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+					  <div class="casa-form-guidance casa-drone-instructions" id="dji-6"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+					  <div class="casa-form-guidance casa-drone-instructions" id="dji-7"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+					  <div class="casa-form-guidance casa-drone-instructions" id="dji-8"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+
+
+					  <div class="casa-form-guidance casa-drone-instructions" id="dji-9"><p><strong>How do I find my serial number?</strong><br />The serial number for your drone is located inside the body of the drone. To find the serial number please remove the battery and you will be able to see the serial number inside the battery compartment. It will be a 14 character serial number split across two lines next to a QR code. You may wish to use a QR code scanner to scan the code and copy and paste this into the drone and RPA registration form.</p>
+
+
+
+                <p>The serial number also appears on the outside of the box of your Phantom 4. It is under the larger barcode prefixed with "S/N" and is the same 14 character serial you will find inside the battery compartment of your aircraft.</p></div>
+
+							   <div class="casa-form-guidance casa-drone-instructions" id="dji-10"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+
+							   <div class="casa-form-guidance casa-drone-instructions" id="dji-11"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+
+							   <div class="casa-form-guidance casa-drone-instructions" id="dji-12"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+
+							   <div class="casa-form-guidance casa-drone-instructions" id="dji-13"><strong>How do I find my serial number?</strong><br />The serial number for your drone can be found lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum enim et augue placerat pellentesque. Nulla facilisi. Integer quis dui nunc. Nulla facilisi. Donec egestas ornare lacinia.</div>
+                    </div>
+
+
+
+
+                <div class="au-form-group">
+                 <label class="au-control-input">
+				  <input class="au-control-input__input" type="checkbox" name="checkbox-ex" id="no-serial">
+				  <span class="au-control-input__text">No serial number available</span>
+				</label>
+                 </div>
+
+					<div id="no-serial-callout" style="display:none;">
+                    <div class="au-form-group">
+					<div class="au-callout">
+If your drone doesn't have a serial number, you will receive a registration mark that will be recorded on the certificate of registration. The CASA-assigned registration mark must always be legibly displayed on the RPA when operating. 					</div>	
+					</div>
+                    </div>
+
+			 <div class="au-form-group">
+             <div class="au-callout">
+
+                        <p>If your drone weighs more than 150kg you are required to register it as a <a href="#">VH Registered Aircraft</a>.</p>
+
+
+               </div>
+             </div>
+
+                    <div class="au-form-group">
+                    <fieldset class="au-fieldset">
+                        <legend class="au-fieldset__legend">
+                            <h3 class="au-display-sm">Is this drone currently registered in another country?</h3>
+                        </legend>
+
+                        <div class="au-control-input au-control-input--block">
+                            <input class="au-control-input__input" type="radio" name="radio-ex-1" id="pct-radio-block" value="">
+                            <input class="au-control-input__input" type="radio" name="radio-ex1">
+                                <label class="au-control-input__text">Yes</label>
+                        </div>
+
+                        <div class="au-control-input au-control-input--block">
+                            <input class="au-control-input__input" type="radio" name="radio-ex1" checked>
+                                <label class="au-control-input__text">No</label>
+                        </div>
+
+                    </fieldset>
+                    </div>
+
+   				      <div class="au-form-group">
+   				           <a class="au-btn" href="registration-information-single3.html">Save drone</a>
+	              </div>
+
+				<div class="form-navigation">
+
+				               <hr />
+            <a href="arn-saved.html" class="au-btn au-btn--secondary">
+            Save and exit application
+            </a>
+
+            </div>
+			 </div>
+			 </div>
+		  </div>
+
+
+          <div class="footer">
+
+            <div class="footer-wrapper">
+               <iframe src="../mycasa-src/footer.html" frameborder="0" border="0" scrolling="no"></iframe>
+            </div>
+         </div>
+      </main>
+   </body>
+</html>
